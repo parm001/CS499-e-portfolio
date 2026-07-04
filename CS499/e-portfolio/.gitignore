@@ -1,8 +1,0 @@
-.DS_Store
-*.dSYM/
-QuestionableCode
-_site/
-.jekyll-cache/
-.sass-cache/
-Gemfile.lock
-.tools/

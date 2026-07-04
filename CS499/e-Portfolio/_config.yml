@@ -1,0 +1,6 @@
+title: CS499/e-portfolio
+description: A CS499 GitHub Pages e-portfolio showcasing static analysis, C++ debugging, and software quality work.
+theme: jekyll-theme-merlot
+
+plugins:
+  - jekyll-feed

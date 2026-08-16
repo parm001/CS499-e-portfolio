@@ -14,15 +14,6 @@ This folder is the complete, GitHub Pages-ready final project for CS 499. The pr
 - `downloads/`: the three milestone artifact ZIP files
 - `video/`: code-review video
 
-## Publish with GitHub Pages
-
-1. Place the contents of this folder at the root of the ePortfolio repository.
-2. Commit and push the files to GitHub.
-3. In the repository, open **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**, select the default branch and `/ (root)`, and save.
-5. After GitHub publishes the site, copy the resulting URL into the course submission.
-
-All links are relative so the portfolio works on GitHub Pages and in a local clone. Open `index.html` to review the site before publishing.
 
 ## Verified results
 

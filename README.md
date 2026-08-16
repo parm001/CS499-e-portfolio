@@ -20,3 +20,6 @@ This folder is the complete, GitHub Pages-ready final project for CS 499. The pr
 - Software design and engineering: 13 passed checks, warnings-as-errors build, AddressSanitizer and UndefinedBehaviorSanitizer
 - Algorithms and data structures: 19 passed checks, separate reusable implementation/demo/test programs, and large-input performance comparison
 - Databases: six automated tests covering integrity, secure input handling, auditing, reporting, and export
+
+- Video link https://youtu.be/M14buPoOqS8
+  

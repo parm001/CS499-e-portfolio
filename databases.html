@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CS 499 databases enhancement narrative, SQLite schema, Python application, and automated tests.">
+  <title>Databases | Parminder Singh</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">Parminder Singh <small>CS 499 ePortfolio</small></a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Self-Assessment</a></li>
+          <li><a href="code-review.html">Code Review</a></li>
+          <li><a href="software-design.html">Software Design</a></li>
+          <li><a href="algorithms.html">Algorithms</a></li>
+          <li><a href="databases.html" aria-current="page">Databases</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="inner">
+        <p class="eyebrow">Enhancement Three</p>
+        <h1>Databases</h1>
+        <p class="lede">A secure Python and SQLite application that transforms code-review findings into normalized, constrained, auditable, and decision-ready data.</p>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="metric-band" aria-label="Database verification summary">
+        <div class="metric"><b>3</b><small>related tables</small></div>
+        <div class="metric"><b>6 / 6</b><small>automated tests passed</small></div>
+        <div class="metric"><b>8</b><small>seeded security findings</small></div>
+        <div class="metric"><b>0</b><small>raw user values concatenated into SQL</small></div>
+      </section>
+
+      <div class="callout"><strong>Feedback converted into evidence:</strong> the final database milestone replaces an early design concept with a working schema, executable application, secure queries, sample report, JSON export, audit history, and automated tests.</div>
+
+      <div class="two-column">
+        <article class="measure">
+          <p class="eyebrow">Artifact Narrative</p>
+          <h2>Artifact description</h2>
+          <p>The artifact began as <code>QuestionableCode.cpp</code>, a C++ source file used in CS 405 and CS 410 coursework to compare compiler diagnostics, Cppcheck results, and manual security review. The original intentionally contains unsafe patterns including endless recursion, an out-of-bounds write, iterator invalidation, a dangling pointer, and an exception thrown from a <code>noexcept</code> function. I created the database enhancement in August 2026. It is a Python command-line application backed by SQLite that stores eight findings from the review, validates them through a relational schema, and produces repeatable summaries for decision making. The original C++ file remains unchanged so the relationship between source defects and the enhanced database solution is clear.</p>
+
+          <h2>Justification and improvements</h2>
+          <p>I selected this artifact because it connects secure software development with dependable data management. The original exercise showed how analysis tools expose defects, but its results were unstructured and difficult to compare, update, or reuse. The database makes those observations durable. A developer, reviewer, or manager can see how many findings are critical, which tool identified each issue, which items remain open, and what remediation was recommended without rereading the source or separate notes.</p>
+          <p>The central improvement is a normalized three-table schema. <code>scans</code> records the reviewed artifact and context; <code>findings</code> stores each issue and links it to a scan; and <code>finding_status_history</code> preserves workflow changes. Primary keys provide stable identities. <code>NOT NULL</code>, <code>CHECK</code>, <code>UNIQUE</code>, and positive-value constraints reject incomplete or invalid records. Foreign-key enforcement and cascading cleanup protect referential integrity. Indexes support common filters by scan, risk, severity, and status. A trigger records status changes automatically, providing an auditable history without relying on every caller to remember a second insert.</p>
+          <p>The application layer demonstrates secure database access. Values are passed through bound parameters instead of concatenated into SQL. The only dynamic SQL element—a requested reporting column—is mapped through a fixed allow-list. Transaction contexts keep related operations atomic, and foreign keys are enabled for every connection. Aggregate queries summarize findings by risk, severity, status, and source tool; a priority query isolates high and critical items; and JSON export supports future integrations. Six automated tests verify totals, invalid-value rejection, foreign keys, parameterized handling of injection-like text, audit-history creation, priority reporting, and export behavior.</p>
+
+          <h2>Reflection and feedback</h2>
+          <p>The enhancement taught me that database reliability begins with the schema, not only with application validation. Checking severity in Python gives clear feedback, but a <code>CHECK</code> constraint remains effective if another script writes directly to the database. The same principle applies to foreign keys and audit history: locating essential rules close to the data creates a second line of defense. I also learned that parameterization and allow-listing solve different problems. Bound parameters protect values, while identifiers such as column names require a trusted mapping because they cannot be bound in the same way.</p>
+          <p>The main design challenge was choosing enough structure to demonstrate database skills without overengineering a small educational dataset. A larger enterprise model could separate tools, levels, users, and artifacts into more lookup tables, but that would add joins and maintenance without improving this fixed use case. I kept controlled values as schema constraints and separated only entities with distinct lifecycles: scans, findings, and status changes. Grouped totals and a focused priority list also helped translate stored records into decisions for audiences beyond database developers.</p>
+          <p>I incorporated earlier instructor feedback that my database plan was only a starting concept and did not yet prove database skills. In response, I built the working SQLite schema and Python application, added repeatable seeding and reports, included sample output, and created six automated tests that intentionally try invalid relationships and SQL-like payloads. This changed the portfolio evidence from a description of intended work into an executable, verifiable database solution.</p>
+
+          <h2>Course outcome alignment</h2>
+          <p>This enhancement fully supports Outcome 2 because the README, command-line interface, sample report, schema names, JSON export, and narrative communicate technical decisions to developer and nondeveloper audiences. It supports Outcome 3 through the evaluation of relationships, queries, indexes, constraints, and the trade-off between a convenient single table and a normalized design. Outcome 4 is met directly through Python, SQL, SQLite, automated tests, reporting, and export tooling. Outcome 5 is met through constraints, foreign keys, parameterized statements, allow-listing, atomic transactions, and tests that assume malformed or adversarial input is possible.</p>
+          <p>Outcome 1 is partially met by this individual artifact. Consistent classifications and audience-friendly reports give reviewers a shared view of risk and support team prioritization, but collaboration is demonstrated more completely across the full portfolio and the program experience described in the professional self-assessment. Overall, the enhancement transformed a one-time code-review exercise into a reproducible database application with trustworthy data, auditability, and decision-ready output.</p>
+        </article>
+
+        <aside class="side-panel" aria-label="Database files">
+          <h2>Artifact files</h2>
+          <ul class="file-list">
+            <li><a href="artifacts/databases/enhanced/schema.sql">SQLite schema</a></li>
+            <li><a href="artifacts/databases/enhanced/security_findings_tracker.py">Python application</a></li>
+            <li><a href="artifacts/databases/enhanced/test_security_findings_tracker.py">Automated tests</a></li>
+            <li><a href="artifacts/databases/enhanced/sample_output.txt">Sample report</a></li>
+            <li><a href="artifacts/databases/enhanced/test_results.txt">Recorded test results</a></li>
+            <li><a href="artifacts/databases/enhanced/README.md">Design and usage README</a></li>
+          </ul>
+          <h2>Downloads</h2>
+          <ul class="download-list">
+            <li><a href="documents/Narrative_Databases_Parminder_Singh.docx">Narrative (Word)</a></li>
+            <li><a href="downloads/CS499_Milestone_Four_Artifact_Files_Parminder_Singh.zip">Artifact ZIP</a></li>
+            <li><a href="artifacts/databases/original/QuestionableCode.cpp">Original C++ artifact</a></li>
+          </ul>
+          <h2>Run the tests</h2>
+          <pre><code>python3 -m unittest -v \
+  test_security_findings_tracker.py</code></pre>
+          <p class="note">The runtime database is generated from <code>schema.sql</code> and intentionally excluded from the submission.</p>
+        </aside>
+      </div>
+
+      <div class="button-row">
+        <a class="button" href="index.html">Return to self-assessment</a>
+        <a class="button secondary" href="algorithms.html">Back to algorithms</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span>Parminder Singh · CS 499 Computer Science Capstone</span><a href="#main">Back to top</a></div>
+  </footer>
+</body>
+</html>

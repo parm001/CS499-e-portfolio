@@ -1,0 +1,48 @@
+CS 499 Milestone Two Build and Test Results
+Student: Parminder Singh
+
+$ g++ -std=c++17 -Wall -Wextra -Wpedantic -Werror SecureCodeReviewEnhanced.cpp -o secure_code_review
+Compilation completed with warnings treated as errors.
+
+$ ./secure_code_review
+Secure Code Review Enhanced Artifact
+
+[PASS] registered type is found
+[PASS] unregistered type is rejected
+[PASS] copy operation preserves object state
+[PASS] noexcept operation reports success without throwing
+[PASS] returned value remains valid after the function exits
+[PASS] valid vector index is updated
+[PASS] out-of-range vector index is rejected
+[PASS] range-sum algorithm returns the expected result
+[PASS] invalid range is rejected with a clear exception
+[PASS] all matching vector values are removed safely
+[PASS] calculation is independent of assertion side effects
+[PASS] linked tokens are counted correctly
+[PASS] null token input is handled safely
+
+Verification summary: 13 passed, 0 failed.
+
+$ g++ -std=c++17 -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer SecureCodeReviewEnhanced.cpp -o secure_code_review_sanitized
+Sanitizer build completed.
+
+$ ./secure_code_review_sanitized
+Secure Code Review Enhanced Artifact
+
+[PASS] registered type is found
+[PASS] unregistered type is rejected
+[PASS] copy operation preserves object state
+[PASS] noexcept operation reports success without throwing
+[PASS] returned value remains valid after the function exits
+[PASS] valid vector index is updated
+[PASS] out-of-range vector index is rejected
+[PASS] range-sum algorithm returns the expected result
+[PASS] invalid range is rejected with a clear exception
+[PASS] all matching vector values are removed safely
+[PASS] calculation is independent of assertion side effects
+[PASS] linked tokens are counted correctly
+[PASS] null token input is handled safely
+
+Verification summary: 13 passed, 0 failed.
+
+Result: Enhanced artifact passed the warning-clean build and sanitizer run.

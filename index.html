@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Parminder Singh's CS 499 Computer Science Capstone ePortfolio and professional self-assessment.">
+  <title>Parminder Singh | CS 499 ePortfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">Parminder Singh <small>CS 499 ePortfolio</small></a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html" aria-current="page">Self-Assessment</a></li>
+          <li><a href="code-review.html">Code Review</a></li>
+          <li><a href="software-design.html">Software Design</a></li>
+          <li><a href="algorithms.html">Algorithms</a></li>
+          <li><a href="databases.html">Databases</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="inner">
+        <p class="eyebrow">Computer Science Capstone</p>
+        <h1>Secure, testable software—with evidence.</h1>
+        <p class="lede">This ePortfolio presents my growth across software engineering, algorithms and data structures, databases, security, and professional communication.</p>
+        <div class="hero-actions">
+          <a class="button" href="#assessment">Read the self-assessment</a>
+          <a class="button secondary" href="documents/Professional_Self_Assessment_Parminder_Singh.docx">Download Word document</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="proof-grid" aria-label="Portfolio verification highlights">
+        <div class="proof"><strong>13 / 13</strong><span>software-design checks passed</span></div>
+        <div class="proof"><strong>19 / 19</strong><span>algorithm checks passed</span></div>
+        <div class="proof"><strong>6 / 6</strong><span>database tests passed</span></div>
+      </section>
+
+      <article id="assessment" class="measure">
+        <p class="eyebrow">Professional Self-Assessment</p>
+        <h2>Professional introduction</h2>
+        <p>My Computer Science program and capstone ePortfolio have prepared me to contribute as an entry-level software developer with a strong interest in secure application development, code quality, and software verification. The program taught me to connect technical decisions to the people and goals they serve. I now approach a computing problem by clarifying requirements, selecting an appropriate design, considering data and algorithm trade-offs, anticipating misuse, verifying behavior, and communicating the result in a form that another person can evaluate and maintain.</p>
+        <p>The ePortfolio makes that growth measurable. Across the featured enhancements, I produced a warning-clean C++17 redesign with 13 passing checks, a reusable algorithms library with 19 passing checks and two large-input performance comparisons, and a Python/SQLite findings tracker with six automated database tests. These results show more than completed code. They demonstrate a repeatable professional workflow: analyze an existing system, identify risks and constraints, justify a design, implement the change, test normal and adverse cases, incorporate feedback, and present evidence.</p>
+        <p>My professional values are reliability, security, clarity, and continuous improvement. I want to build software that behaves predictably, protects data, and can be understood by the next developer. The capstone strengthened those values because every improvement had to be supported by a reason, a test, and clear documentation. My immediate goal is a role in software development, application security, or software quality assurance where I can contribute C++, Python, SQL, testing, and secure coding skills while continuing to grow through code review and team delivery.</p>
+
+        <h2>Program experience and transferable strengths</h2>
+        <h3>Collaborating in a team environment</h3>
+        <p>The program showed me that collaboration is a technical practice, not only a meeting activity. In CS 250 coursework, I practiced translating product-owner priorities into user stories, acceptance criteria, sprint work, and reviewable increments. That process required listening for the actual user need, breaking large requests into achievable work, and keeping the definition of done visible. It also reinforced the value of retrospectives: feedback is most useful when it changes the next iteration rather than becoming a note that is never applied.</p>
+        <p>The capstone implementation was primarily individual, so I do not present it as evidence of a large team project. Instead, it demonstrates habits that make team work more effective: small modules with clear responsibilities, reproducible build instructions, separate test suites, meaningful names, versionable text artifacts, and documented trade-offs. The instructor feedback on the algorithms enhancement is a concrete example. I separated the reusable implementation from the demonstration and verification programs, then added a larger performance comparison. The revision made the code easier for another developer to reuse and made the benefit easier for a nontechnical reviewer to understand.</p>
+
+        <h3>Communicating with stakeholders</h3>
+        <p>Throughout the program, I learned to adapt communication to purpose and audience. A developer needs interfaces, complexity, failure cases, and commands that reproduce results. An instructor or security reviewer needs traceable evidence. A manager needs impact, priority, and risk stated in plain language. Coursework in secure coding and security policy required translating technical weaknesses into controls and recommendations, while presentations and written reports required organizing those ideas into a decision-ready form.</p>
+        <p>This portfolio applies that lesson through a short code-review video, concise READMEs, inline narratives, source comparisons, test records, performance evidence, and a database report grouped by risk. The same findings can therefore be examined at different levels of detail. That flexibility supports stakeholder decisions without hiding the technical basis for the recommendation.</p>
+
+        <h3>Data structures and algorithms</h3>
+        <p>My algorithms and data-structures coursework developed my ability to evaluate a solution rather than stopping when it produces the expected output. In CS 260, I worked with structures such as vectors, linked structures, hash tables, and trees and considered how searching, sorting, insertion, deletion, and traversal behave as input grows. That foundation helps me ask whether a container matches the access pattern, whether an iterator remains valid after mutation, and whether a simpler mathematical or library-supported algorithm is available.</p>
+        <p>I also learned that complexity and security are connected. Endless recursion, uncontrolled traversal, integer overflow, and invalid indexing are correctness defects that can become denial-of-service or memory-safety risks. My work now combines asymptotic analysis with boundary testing and explicit failure behavior. This approach is visible in the capstone, but it was shaped by earlier coursework that required comparing alternative structures and explaining the cost of each choice.</p>
+
+        <h3>Software engineering and databases</h3>
+        <p>Software-engineering coursework strengthened my ability to move from requirements to maintainable components. I practiced responsibility separation, interface design, object-oriented organization, version control, documentation, and verification. In CS 320, requirements-based testing reinforced the need to test normal, boundary, and invalid inputs rather than treating successful compilation as proof of correctness. That lesson directly informs how I build verification evidence today.</p>
+        <p>Database coursework in DAD 220 and CS 340 developed my understanding of relational models, CRUD operations, keys, relationships, integrity rules, and query-driven reporting. I learned to place essential validity rules near the data instead of relying only on interface code. I also learned to treat schema design as a trade-off: normalization improves consistency and reuse, while unnecessary tables and joins can make a small solution harder to maintain. The capstone database artifact applies that foundation through three related tables, constraints, indexes, an audit trigger, parameterized operations, and repeatable reports.</p>
+
+        <h3>Security mindset</h3>
+        <p>Security became a central professional strength through CS 405 and CS 410. Static analysis, secure coding standards, policy work, and low-level examination taught me to look beyond visible functionality. I learned to question memory lifetime, exception guarantees, input boundaries, integer behavior, data access, trust assumptions, and the ways an attacker could turn a reliability defect into an exploit or service disruption. Reverse-engineering exercises also strengthened my ability to trace control flow and explain behavior that is not obvious from a high-level interface.</p>
+        <p>My current security process uses defense in depth. Compiler warnings, sanitizers, explicit contracts, bounds checks, database constraints, foreign keys, bound parameters, allow-lists, and adverse-input tests address different failure modes. No single tool proves a system secure, so I combine automated evidence with manual reasoning and clear remediation notes. This mindset prepares me to contribute to development teams that need security integrated into ordinary design and testing rather than added only at release time.</p>
+
+        <h2>How the artifacts fit together</h2>
+        <p>The portfolio uses one original C++ static-analysis exercise as a consistent baseline and then examines it through three complementary computer science categories. Keeping the baseline constant makes the growth visible: the first enhancement improves architecture and contracts, the second improves algorithms and data structures, and the third turns review findings into trustworthy and reportable data. Together, the artifacts show that I can work across code, performance, verification, persistence, security, and communication.</p>
+      </article>
+
+      <section aria-labelledby="artifact-summary">
+        <h2 id="artifact-summary">Portfolio at a glance</h2>
+        <div class="card-grid">
+          <article class="card">
+            <span class="tag">Milestone One</span>
+            <h3><a href="code-review.html">Code review</a></h3>
+            <p>Analyzes the original behavior, identifies reliability and security concerns, and introduces the enhancement plan.</p>
+          </article>
+          <article class="card">
+            <span class="tag">Enhancements One &amp; Two</span>
+            <h3><a href="software-design.html">C++ engineering</a></h3>
+            <p>Moves from unsafe examples to maintainable contracts, reusable algorithms, automated verification, and performance evidence.</p>
+          </article>
+          <article class="card">
+            <span class="tag">Enhancement Three</span>
+            <h3><a href="databases.html">Secure data layer</a></h3>
+            <p>Transforms findings into normalized, constrained, auditable, and decision-ready SQLite records.</p>
+          </article>
+        </div>
+
+        <h2>Course outcome summary</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Outcome</th><th>Portfolio evidence</th><th>Assessment</th></tr></thead>
+            <tbody>
+              <tr><td>1 — Collaborative environments and decision support</td><td>Reviewable modules, shared documentation, stakeholder reports, feedback incorporation, and CS 250 team-process practices</td><td>Partially demonstrated in the individual capstone and strengthened by program coursework</td></tr>
+              <tr><td>2 — Professional communication</td><td>Video, narratives, READMEs, source comments, tables, reports, and audience-appropriate performance explanation</td><td>Fully demonstrated</td></tr>
+              <tr><td>3 — Algorithmic design and trade-offs</td><td>Complexity analysis, container selection, overflow handling, cycle detection, indexes, and query design</td><td>Fully demonstrated</td></tr>
+              <tr><td>4 — Computing techniques, skills, and tools</td><td>C++17, Python, SQL, SQLite, compilers, sanitizers, automated tests, and GitHub Pages-ready presentation</td><td>Fully demonstrated</td></tr>
+              <tr><td>5 — Security mindset</td><td>Memory-safety remediation, defensive contracts, adverse-input tests, constraints, foreign keys, parameterization, and allow-listing</td><td>Fully demonstrated</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Professional readiness</h2>
+        <p class="measure">Completing the program has given me both a technical foundation and a clearer standard for my own work. I can enter a codebase, reason about risk and behavior, implement an improvement, verify it with multiple forms of evidence, and explain the result to technical and nontechnical audiences. The ePortfolio is therefore not only a collection of assignments. It is a compact demonstration of how I approach professional software problems and how I will continue learning within a development team.</p>
+        <div class="button-row">
+          <a class="button" href="code-review.html">Continue to the code review</a>
+          <a class="button secondary" href="documents/Professional_Self_Assessment_Parminder_Singh.docx">Download self-assessment</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span>Parminder Singh · CS 499 Computer Science Capstone</span><a href="#main">Back to top</a></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CS 499 algorithms and data structures enhancement narrative, source, tests, and performance comparison.">
+  <title>Algorithms &amp; Data Structures | Parminder Singh</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">Parminder Singh <small>CS 499 ePortfolio</small></a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Self-Assessment</a></li>
+          <li><a href="code-review.html">Code Review</a></li>
+          <li><a href="software-design.html">Software Design</a></li>
+          <li><a href="algorithms.html" aria-current="page">Algorithms</a></li>
+          <li><a href="databases.html">Databases</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="inner">
+        <p class="eyebrow">Enhancement Two</p>
+        <h1>Algorithms and data structures</h1>
+        <p class="lede">Reusable C++17 algorithms separated from demonstration and test output, with edge-case verification, complexity analysis, and a large-input performance comparison.</p>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="metric-band" aria-label="Algorithms verification summary">
+        <div class="metric"><b>19 / 19</b><small>verification checks passed</small></div>
+        <div class="metric"><b>≈1,602×</b><small>faster membership lookup</small></div>
+        <div class="metric"><b>≈3.32M×</b><small>faster inclusive range sum</small></div>
+        <div class="metric"><b>0</b><small>sanitizer failures</small></div>
+      </section>
+
+      <section aria-labelledby="performance-heading">
+        <h2 id="performance-heading">Large-input performance comparison</h2>
+        <p class="measure">The final revision responds directly to instructor feedback. It uses 5,000 type names and repeats a lookup for the last name 250 times. It also calculates the inclusive sum from 0 through 50,000,000. Timing varies by machine, but the difference in growth is visible even to a nontechnical reviewer.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Comparison</th><th>Earlier approach</th><th>Enhanced approach</th><th>Representative improvement</th></tr></thead>
+            <tbody>
+              <tr><td>250 membership lookups</td><td>Recursive linear search: 3.095 ms</td><td>Hash lookup: 0.002 ms</td><td>About 1,602 times faster</td></tr>
+              <tr><td>Sum 0 through 50,000,000</td><td>Loop: 27.836 ms</td><td>Formula: 8.393 ns per call</td><td>About 3.32 million times faster</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout"><strong>Plain-language takeaway:</strong> the hash table avoids checking thousands of names one at a time, and the arithmetic formula calculates the total without visiting all 50,000,001 values.</div>
+      </section>
+
+      <div class="two-column">
+        <article class="measure">
+          <p class="eyebrow">Artifact Narrative</p>
+          <h2>Artifact description</h2>
+          <p>The artifact selected for this enhancement is <code>QuestionableCode.cpp</code>, a C++ static-analysis exercise created during earlier CS 405 and CS 410 coursework. The original program intentionally includes endless recursion, unchecked indexed access, iterator invalidation, inefficient summation, and broken pointer traversal. I created the algorithms and data-structures enhancement in July 2026 and revised it in August 2026. The original remains unchanged. The final enhancement consists of a reusable public interface and implementation, an ordinary demonstration program, a separate verification suite, and a separate performance comparison.</p>
+
+          <h2>Justification and improvements</h2>
+          <p>I selected this artifact because it demonstrates that I can examine existing logic, identify why it is unsafe or inefficient, choose an appropriate algorithm or data structure, and explain the trade-offs. The recursive type check was replaced with <code>std::unordered_set</code>, which provides average O(1) membership lookup. The unchecked array write became a bounds-checked <code>std::vector</code> update that returns success or failure. Unsafe deletion during iteration became the erase-remove idiom, which removes matches in O(n) time without reusing an invalid iterator.</p>
+          <p>I also improved two areas beyond the initial plan. A loop-based inclusive range sum was replaced with the arithmetic-series formula, reducing the work from O(n) to O(1). The function validates the range, checks arithmetic overflow, and returns <code>std::optional</code> when a safe result cannot be produced. For the linked token structure, I implemented Floyd’s tortoise-and-hare algorithm. It detects cycles in O(n) time and O(1) extra space, finds the cycle entry, and counts unique nodes. This prevents endless traversal while avoiding an auxiliary visited-node set.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Original issue</th><th>Enhanced approach</th><th>Complexity</th></tr></thead>
+              <tbody>
+                <tr><td>Recursive membership search</td><td><code>std::unordered_set</code> direct lookup</td><td>Average O(1); worst O(n)</td></tr>
+                <tr><td>Unchecked fixed-array write</td><td>Bounds-checked <code>std::vector</code> update</td><td>O(1) time and space</td></tr>
+                <tr><td>Iterator invalidation</td><td>Erase-remove idiom</td><td>O(n) time; O(1) auxiliary space</td></tr>
+                <tr><td>Loop-based range sum</td><td>Checked arithmetic-series formula</td><td>O(1) time and space</td></tr>
+                <tr><td>Unsafe token traversal</td><td>Floyd cycle detection and unique-node count</td><td>O(n) time; O(1) auxiliary space</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Reflection and feedback</h2>
+          <p>The main lesson I learned is that a data structure or algorithm affects correctness, performance, readability, and security at the same time. Using a standard container does not automatically make an operation safe; indexes, iterators, arithmetic, and failure cases must still be managed. The most difficult challenge was implementing the constant-time range sum without creating overflow in intermediate calculations. I addressed it through validation, checked arithmetic, and an explicit optional result. Floyd’s algorithm was also challenging because detecting a meeting point was only the first step; I also had to locate the cycle entry and calculate the number of unique nodes.</p>
+          <p>Testing normal and edge cases strengthened my understanding of the algorithms. The verification suite contains 19 checks covering valid and invalid indexes, duplicates, missing values, overflow, empty chains, ordinary linked chains, and multiple cycle patterns. The project compiles under C++17 with warnings treated as errors and passes AddressSanitizer and UndefinedBehaviorSanitizer with 19 checks passed and no failures.</p>
+          <p>I incorporated the instructor’s final-polish feedback by moving all pass/fail reporting out of the reusable implementation and demonstration program and into <code>AlgorithmsDataStructuresTests.cpp</code>. I also added <code>PerformanceComparison.cpp</code> with 5,000 type names, 250 membership searches, and a range from 0 through 50,000,000. The revision improved reusability, separation of concerns, verification quality, and stakeholder communication.</p>
+
+          <h2>Course outcome alignment</h2>
+          <p>This enhancement most strongly meets Course Outcome 3 because it designs and evaluates solutions using correctness, time complexity, memory use, and explicit trade-offs. It also fully supports Outcome 2 through the narrative, README, code comments, complexity table, verification output, and plain-language benchmark explanation. Outcome 4 is met through C++17, standard-library containers and algorithms, compiler warnings, a reusable library structure, and sanitizer testing. Outcome 5 is met through defensive handling of invalid indexes, duplicate values, overflow, null pointers, and cyclic linked structures.</p>
+          <p>Outcome 1 is partially met. The implementation was individual, but the separated public interface, demonstration, verification suite, build commands, and documented trade-offs make the work easier to review, reuse, and discuss in a team. The final enhancement is substantially stronger than the original because it replaces unsafe logic with efficient reusable components and provides both correctness and performance evidence.</p>
+        </article>
+
+        <aside class="side-panel" aria-label="Algorithms files">
+          <h2>Reusable code</h2>
+          <ul class="file-list">
+            <li><a href="artifacts/algorithms/Enhanced/AlgorithmsDataStructuresEnhanced.hpp">Public interface</a></li>
+            <li><a href="artifacts/algorithms/Enhanced/AlgorithmsDataStructuresEnhanced.cpp">Implementation</a></li>
+            <li><a href="artifacts/algorithms/Enhanced/AlgorithmsDemo.cpp">Demonstration program</a></li>
+          </ul>
+          <h2>Verification</h2>
+          <ul class="file-list">
+            <li><a href="artifacts/algorithms/Verification/AlgorithmsDataStructuresTests.cpp">19-check test suite</a></li>
+            <li><a href="artifacts/algorithms/Verification/PerformanceComparison.cpp">Performance comparison</a></li>
+            <li><a href="artifacts/algorithms/Verification/build-and-test-results.txt">Recorded results</a></li>
+            <li><a href="artifacts/algorithms/README.md">README and build commands</a></li>
+          </ul>
+          <h2>Downloads</h2>
+          <ul class="download-list">
+            <li><a href="documents/Narrative_Algorithms_Data_Structures_Parminder_Singh.docx">Narrative (Word)</a></li>
+            <li><a href="downloads/CS499_Milestone_Three_Artifact_Files_Parminder_Singh.zip">Artifact ZIP</a></li>
+            <li><a href="artifacts/original/QuestionableCode.cpp">Original C++ artifact</a></li>
+          </ul>
+          <p class="note">The reusable implementation has no <code>main</code> function and produces no test output. Demonstration, tests, and benchmarking are separate programs.</p>
+        </aside>
+      </div>
+
+      <div class="button-row">
+        <a class="button" href="databases.html">Next: Databases</a>
+        <a class="button secondary" href="software-design.html">Back to software design</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span>Parminder Singh · CS 499 Computer Science Capstone</span><a href="#main">Back to top</a></div>
+  </footer>
+</body>
+</html>

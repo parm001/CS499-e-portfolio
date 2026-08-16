@@ -1,0 +1,97 @@
+CS 499 Milestone Three Build, Test, and Performance Results
+Student: Parminder Singh
+Final revision: August 15, 2026
+
+1. Reusable implementation and demonstration build
+
+$ g++ -std=c++17 -Wall -Wextra -Wpedantic -Werror -IEnhanced \
+    Enhanced/AlgorithmsDataStructuresEnhanced.cpp \
+    Enhanced/AlgorithmsDemo.cpp -o build/algorithms_demo
+
+Compilation completed with warnings treated as errors.
+
+$ ./build/algorithms_demo
+CS 499 reusable algorithms demonstration
+decimal registered: yes
+values removed: 3
+sum from 1 through 100: 5050
+unique nodes in the chain: 3
+
+2. Separate verification-suite build and run
+
+$ g++ -std=c++17 -Wall -Wextra -Wpedantic -Werror -IEnhanced \
+    Enhanced/AlgorithmsDataStructuresEnhanced.cpp \
+    Verification/AlgorithmsDataStructuresTests.cpp -o build/algorithms_tests
+
+Compilation completed with warnings treated as errors.
+
+$ ./build/algorithms_tests
+CS 499 Algorithms and Data Structures Verification
+
+[PASS] known type is found by direct hash lookup
+[PASS] unknown type is rejected
+[PASS] new type can be added and retrieved
+[PASS] duplicate insertion is rejected without changing the set
+[PASS] valid vector index is updated in place
+[PASS] out-of-range index is rejected without mutation
+[PASS] empty vector rejects every index
+[PASS] erase-remove deletes all matches and preserves retained order
+[PASS] removing a missing value leaves the vector unchanged
+[PASS] erase-remove handles a vector containing only matches
+[PASS] constant-time range sum returns the expected value
+[PASS] single-value range is handled correctly
+[PASS] reversed range is rejected
+[PASS] range whose count overflows is rejected
+[PASS] range whose endpoint sum overflows is rejected
+[PASS] null chain is reported as empty
+[PASS] acyclic chain is counted without false cycle detection
+[PASS] cycle is detected and its entry node is identified
+[PASS] single-node self-cycle is handled safely
+
+Verification summary: 19 passed, 0 failed.
+
+3. Large-input performance comparison
+
+$ g++ -std=c++17 -O2 -Wall -Wextra -Wpedantic -Werror -IEnhanced \
+    Enhanced/AlgorithmsDataStructuresEnhanced.cpp \
+    Verification/PerformanceComparison.cpp -o build/performance_comparison
+
+$ ./build/performance_comparison
+CS 499 large-input performance comparison
+
+Membership lookup: 5000 type names, 250 searches for the last name
+  Recursive linear search: 3.095 ms
+  Hash-based lookup:       0.002 ms
+  Observed speedup:        1601.736x
+
+Inclusive range sum: 0 through 50000000
+  Loop-based calculation:  27.836 ms
+  Formula average:          8.393 ns per call
+  Estimated speedup:        3316652.071x
+
+Plain-language result: the hash lookup avoids checking thousands of
+names one by one, and the formula calculates the range total without
+visiting all 50,000,001 numbers.
+
+Timing values are one representative run and will vary by computer. Both
+implementations produced matching results before the timings were reported.
+
+4. AddressSanitizer and UndefinedBehaviorSanitizer verification
+
+$ g++ -std=c++17 -Wall -Wextra -Wpedantic -Werror \
+    -fsanitize=address,undefined -fno-omit-frame-pointer -IEnhanced \
+    Enhanced/AlgorithmsDataStructuresEnhanced.cpp \
+    Verification/AlgorithmsDataStructuresTests.cpp \
+    -o build/algorithms_tests_sanitized
+
+$ ASAN_OPTIONS=detect_leaks=0 ./build/algorithms_tests_sanitized
+
+Verification summary: 19 passed, 0 failed.
+
+AddressSanitizer memory checks and UndefinedBehaviorSanitizer remained enabled.
+Leak checking was disabled because LeakSanitizer is unavailable under the
+container's ptrace restrictions.
+
+Final result: The reusable implementation, separate demonstration, separate
+verification suite, performance comparison, warning-clean builds, and sanitizer
+run all completed successfully.

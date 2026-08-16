@@ -1,0 +1,20 @@
+Automated test results
+======================
+
+Command:
+python3 -m unittest -v test_security_findings_tracker.py
+
+Results:
+test_foreign_key_enforcement ... ok
+test_parameterized_insert_treats_sql_as_data ... ok
+test_priority_report_and_json_export ... ok
+test_schema_rejects_invalid_severity ... ok
+test_seeded_counts_and_risk_summary ... ok
+test_status_update_creates_history_record ... ok
+
+Ran 6 tests.
+Result: OK
+
+Verified behaviors include schema constraints, referential integrity,
+parameterized SQL handling, aggregation, priority reporting, JSON export,
+and trigger-based status history.

@@ -1,0 +1,33 @@
+SQLite Security Findings Tracker
+==================================
+Database: <selected database path>
+Scans: 1
+Findings: 8
+Recorded status changes: 0
+
+Risk classification summary
+- RISK: 7
+- NOT RISK: 1
+
+Severity summary
+- CRITICAL: 4
+- HIGH: 3
+- LOW: 1
+
+Status summary
+- REMEDIATED: 7
+- ACCEPTED: 1
+
+Source tool summary
+- CPPCHECK: 6
+- MANUAL REVIEW: 1
+- VISUAL STUDIO: 1
+
+High-priority findings
+- [CRITICAL/REMEDIATED] Endless recursion (CPPCHECK, line 36)
+- [CRITICAL/REMEDIATED] Null pointer loop bug (CPPCHECK, line 107)
+- [CRITICAL/REMEDIATED] Out-of-bounds array write (CPPCHECK, line 64)
+- [CRITICAL/REMEDIATED] Pointer to local variable (MANUAL REVIEW, line 57)
+- [HIGH/REMEDIATED] Assignment inside assert (VISUAL STUDIO, line 127)
+- [HIGH/REMEDIATED] Iterator invalidation (CPPCHECK, line 88)
+- [HIGH/REMEDIATED] Throw from noexcept function (CPPCHECK, line 50)

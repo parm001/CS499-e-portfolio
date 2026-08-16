@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CS 499 software design and engineering enhancement narrative and artifact files.">
+  <title>Software Design &amp; Engineering | Parminder Singh</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">Parminder Singh <small>CS 499 ePortfolio</small></a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Self-Assessment</a></li>
+          <li><a href="code-review.html">Code Review</a></li>
+          <li><a href="software-design.html" aria-current="page">Software Design</a></li>
+          <li><a href="algorithms.html">Algorithms</a></li>
+          <li><a href="databases.html">Databases</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="inner">
+        <p class="eyebrow">Enhancement One</p>
+        <h1>Software design and engineering</h1>
+        <p class="lede">A warning-clean C++17 redesign that replaces unsafe snippets with focused responsibilities, explicit contracts, and verification that remains active in release builds.</p>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="metric-band" aria-label="Software design verification summary">
+        <div class="metric"><b>13 / 13</b><small>runtime checks passed</small></div>
+        <div class="metric"><b>0</b><small>compiler warnings</small></div>
+        <div class="metric"><b>ASan</b><small>passed</small></div>
+        <div class="metric"><b>UBSan</b><small>passed</small></div>
+      </section>
+
+      <div class="two-column">
+        <article class="measure">
+          <p class="eyebrow">Artifact Narrative</p>
+          <h2>Artifact description</h2>
+          <p>The artifact selected for this enhancement is <code>QuestionableCode.cpp</code>, a C++ static-analysis exercise created during earlier CS 405 and CS 410 coursework before the CS 499 capstone. The original file intentionally contains unsafe or unreliable examples used to compare compiler warnings with static-analysis findings. These examples include endless recursion, incomplete copy behavior, an exception thrown from a <code>noexcept</code> function, a pointer to a local variable, an out-of-bounds array write, iterator invalidation, assignment inside an assertion, and broken token traversal. In July 2026, I transformed the artifact into <code>SecureCodeReviewEnhanced.cpp</code>. The original remains unchanged for comparison, while the enhanced version presents the remediations as a cohesive, warning-clean, testable C++17 program.</p>
+
+          <h2>Justification for inclusion</h2>
+          <p>I selected this artifact because it demonstrates more than the ability to write a new program. It shows that I can evaluate existing code, explain why a design is unsafe, and improve it without losing its educational purpose. These skills matter in professional software development because developers frequently maintain, review, and modernize code written by other people. The side-by-side files let a reviewer trace each risk to a design decision and to evidence that the corrected behavior works.</p>
+          <p>The enhancement reorganizes unrelated risky examples into focused classes and functions with clear responsibilities and explicit contracts. <code>TypeRegistry</code> performs direct set membership rather than calling itself recursively. <code>CopyableValue</code> uses complete compiler-generated copy behavior. <code>SafeOperation</code> reports status without violating a <code>noexcept</code> contract. <code>safe_local_value</code> returns <code>std::optional&lt;int&gt;</code> rather than exposing a dangling pointer. <code>set_array_value</code> validates an index before updating a vector, and <code>remove_value</code> uses the erase-remove pattern rather than continuing with an invalid iterator.</p>
+          <p>The revised program also uses const-correct methods, <code>[[nodiscard]]</code> annotations, meaningful names, and targeted comments. I replaced assertion-dependent demonstrations with a reusable <code>VerificationSuite</code> because ordinary assertions can be removed from release builds. The completed program performs 13 runtime checks, compiles with warnings treated as errors, and passes AddressSanitizer and UndefinedBehaviorSanitizer. These components showcase interface design, separation of responsibilities, defensive programming, modern C++ use, testability, and secure software engineering.</p>
+
+          <h2>Reflection and feedback</h2>
+          <p>The most important lesson from this enhancement was that correcting a defect is not the same as improving software design. A small change can stop one failure, but a stronger enhancement changes the contract, naming, responsibility boundaries, and verification strategy so that the same problem is less likely to return. For example, changing one array index would only hide the immediate boundary error. Accepting a vector by reference, checking the requested position, and returning a success value creates a reusable contract whose failure behavior can be tested.</p>
+          <p>One challenge was preserving the connection between the original example and each remediation. A broad rewrite could have made the improvement harder to evaluate. I kept each correction focused, named it according to its responsibility, and paired it with targeted checks. A second challenge was deciding how to verify the work without repeating the original assertion mistake. The verification suite reports visible pass-or-fail results in debug and release builds and returns a nonzero exit status when a check fails. Running compiler diagnostics and sanitizers reinforced the value of using several forms of evidence rather than assuming successful compilation proves safety.</p>
+          <p>I incorporated feedback that portfolio evidence should show working results rather than only describe future plans. The final package therefore includes the original and enhanced files, reproducible build commands, recorded output, 13 runtime checks, a warnings-as-errors build, and sanitizer results. Feedback also identified that my early database concept needed a complete implementation; I addressed that separately in the database enhancement so this artifact could remain focused on software design and engineering.</p>
+
+          <h2>Course outcome alignment</h2>
+          <p>This enhancement most strongly meets Course Outcomes 2, 4, and 5. The narrative, README, source comments, and verification output communicate the design to an instructor, developer, or employer. C++17, standard-library containers, explicit interfaces, compiler diagnostics, and sanitizers demonstrate professional computing techniques. The redesign anticipates how unsafe recursion, invalid memory lifetimes, boundary errors, iterator misuse, assertion behavior, exception contracts, and null traversal can create failures or vulnerabilities.</p>
+          <p>The artifact partially meets Outcomes 1 and 3. Its clear interfaces and reviewable evidence support collaborative technical decisions, although the capstone work was completed individually. Direct lookup, bounds checking, vector removal, range calculation, and traversal demonstrate algorithmic thinking, but the separate algorithms enhancement provides the full complexity analysis and trade-off evaluation. The software-design artifact was improved from a set of questionable snippets into a maintainable, executable, and independently verifiable remediation program.</p>
+        </article>
+
+        <aside class="side-panel" aria-label="Software design files">
+          <h2>Artifact files</h2>
+          <ul class="file-list">
+            <li><a href="artifacts/original/QuestionableCode.cpp">Original C++ artifact</a></li>
+            <li><a href="artifacts/software-design/Enhanced/SecureCodeReviewEnhanced.cpp">Enhanced C++ source</a></li>
+            <li><a href="artifacts/software-design/README.md">README and build instructions</a></li>
+            <li><a href="artifacts/software-design/Verification/build-and-test-results.txt">Verification results</a></li>
+            <li><a href="documents/Narrative_Software_Design_Engineering_Parminder_Singh.docx">Narrative (Word)</a></li>
+            <li><a href="downloads/CS499_Milestone_Two_Artifact_Files_Parminder_Singh.zip">Artifact ZIP</a></li>
+          </ul>
+          <h2>Build command</h2>
+          <pre><code>g++ -std=c++17 -Wall -Wextra \
+  -Wpedantic -Werror \
+  SecureCodeReviewEnhanced.cpp \
+  -o secure_code_review</code></pre>
+          <p class="note">Expected result: 13 passed checks and zero failed checks.</p>
+        </aside>
+      </div>
+
+      <div class="button-row">
+        <a class="button" href="algorithms.html">Next: Algorithms and data structures</a>
+        <a class="button secondary" href="code-review.html">Back to code review</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span>Parminder Singh · CS 499 Computer Science Capstone</span><a href="#main">Back to top</a></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CS 499 Milestone One code review for Parminder Singh's capstone ePortfolio.">
+  <title>Code Review | Parminder Singh</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">Parminder Singh <small>CS 499 ePortfolio</small></a>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Self-Assessment</a></li>
+          <li><a href="code-review.html" aria-current="page">Code Review</a></li>
+          <li><a href="software-design.html">Software Design</a></li>
+          <li><a href="algorithms.html">Algorithms</a></li>
+          <li><a href="databases.html">Databases</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="inner">
+        <p class="eyebrow">Milestone One</p>
+        <h1>Code review</h1>
+        <p class="lede">A concise analysis of the original C++ artifact, its reliability and security risks, and the enhancement plan that guided the final portfolio.</p>
+      </div>
+    </section>
+
+    <div class="content">
+      <div class="video-frame">
+        <video controls preload="metadata">
+          <source src="video/CS499_Code_Review_Parminder_Singh.mp4" type="video/mp4">
+          Your browser does not support embedded video. <a href="video/CS499_Code_Review_Parminder_Singh.mp4">Download the MP4 instead</a>.
+        </video>
+      </div>
+      <div class="button-row">
+        <a class="button" href="video/CS499_Code_Review_Parminder_Singh.mp4">Download video</a>
+        <a class="button secondary" href="documents/Code_Review_Script_Parminder_Singh.docx">Download script</a>
+        <a class="button secondary" href="artifacts/original/QuestionableCode.cpp">View original C++ source</a>
+      </div>
+
+      <div class="two-column">
+        <article class="measure">
+          <h2>Existing functionality</h2>
+          <p>The original <code>QuestionableCode.cpp</code> contains small examples involving recursion, copying, exception guarantees, pointers, arrays, vectors, assertions, range calculation, and token traversal. It was created as a static-analysis exercise rather than production software. Several examples compile or appear understandable while still containing defects that can cause crashes, undefined behavior, incorrect results, or inconsistent release behavior.</p>
+
+          <h2>Code analysis</h2>
+          <ul class="check-list">
+            <li>Endless recursion can exhaust the call stack.</li>
+            <li>Incomplete copy behavior can leave object state inconsistent.</li>
+            <li>Throwing from a <code>noexcept</code> function can terminate the process.</li>
+            <li>Returning a pointer to a local variable creates a dangling pointer.</li>
+            <li>Unchecked fixed-array access can corrupt adjacent memory.</li>
+            <li>Erasing while continuing with an invalid vector iterator creates undefined behavior.</li>
+            <li>Assignment inside <code>assert</code> hides a logic error and changes release behavior.</li>
+            <li>Broken traversal logic can skip work, dereference null, or loop indefinitely.</li>
+          </ul>
+
+          <h2>Planned and completed enhancements</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Category</th><th>Planned focus</th><th>Completed evidence</th></tr></thead>
+              <tbody>
+                <tr><td>Software design and engineering</td><td>Clear responsibilities, safer contracts, modern C++ types, visible verification</td><td>13 checks, warnings-as-errors, AddressSanitizer, UndefinedBehaviorSanitizer</td></tr>
+                <tr><td>Algorithms and data structures</td><td>Appropriate containers, bounds safety, valid iteration, efficient summation, cycle-safe traversal</td><td>Reusable library, 19 checks, complexity table, large-input benchmark</td></tr>
+                <tr><td>Databases</td><td>Structured storage for findings, secure access, repeatable reporting</td><td>Normalized SQLite schema, Python CLI, six tests, audit history, JSON export</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Testing, comments, and documentation</h2>
+          <p>The review established that successful compilation alone was not enough. The final enhancements combine runtime checks, compiler warnings, sanitizers, automated database tests, adverse-input cases, recorded output, READMEs, source comments, and build commands. Comments explain design intent and security implications instead of restating individual lines. The documentation gives reviewers a reproducible path from the original risk to the implemented remediation.</p>
+
+          <h2>Outcome alignment</h2>
+          <p>The completed work most strongly demonstrates professional communication, algorithmic design and trade-offs, professional computing tools and techniques, and a security mindset. Collaborative decision support is demonstrated through reviewable artifacts, shared documentation, consistent risk classifications, and feedback incorporation. Because the capstone implementation itself was primarily individual, collaboration remains a partial outcome within the artifacts and is supported more broadly by program coursework.</p>
+        </article>
+
+        <aside class="side-panel" aria-label="Review resources">
+          <h2>Review resources</h2>
+          <ul class="download-list">
+            <li><a href="video/CS499_Code_Review_Parminder_Singh.mp4">Code-review video (MP4)</a></li>
+            <li><a href="documents/Code_Review_Script_Parminder_Singh.docx">Final script (Word)</a></li>
+            <li><a href="artifacts/original/QuestionableCode.cpp">Unchanged original artifact</a></li>
+          </ul>
+          <p class="note">The video introduces the artifact and planned categories. The pages that follow present the completed code, verification, reflection, and final outcome alignment.</p>
+        </aside>
+      </div>
+
+      <div class="button-row">
+        <a class="button" href="software-design.html">Next: Software design and engineering</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><span>Parminder Singh · CS 499 Computer Science Capstone</span><a href="#main">Back to top</a></div>
+  </footer>
+</body>
+</html>

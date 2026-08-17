@@ -1,0 +1,8 @@
+title: "Parminder Singh | CS 499 ePortfolio"
+description: "Computer Science capstone ePortfolio showcasing secure software engineering, algorithms, databases, and software quality."
+theme: jekyll-theme-cayman
+show_downloads: false
+
+exclude:
+  - FINAL_VERIFICATION.md
+  - SUBMISSION_CHECKLIST.md

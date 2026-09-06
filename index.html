@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Parminder Singh's CS 499 Computer Science Capstone ePortfolio and professional self-assessment.">
+  <meta name="description" content="Parminder Singh's software development portfolio featuring secure C++, algorithms, Python, SQLite, testing, and documented verification.">
   <title>Parminder Singh | CS 499 ePortfolio</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,7 +14,8 @@
       <a class="brand" href="index.html">Parminder Singh <small>CS 499 ePortfolio</small></a>
       <nav aria-label="Primary navigation">
         <ul>
-          <li><a href="index.html" aria-current="page">Self-Assessment</a></li>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="#artifact-summary">Projects</a></li>
           <li><a href="code-review.html">Code Review</a></li>
           <li><a href="software-design.html">Software Design</a></li>
           <li><a href="algorithms.html">Algorithms</a></li>
@@ -27,12 +28,13 @@
   <main id="main">
     <section class="hero">
       <div class="inner">
-        <p class="eyebrow">Computer Science Capstone</p>
-        <h1>Secure, testable software—with evidence.</h1>
-        <p class="lede">This ePortfolio presents my growth across software engineering, algorithms and data structures, databases, security, and professional communication.</p>
+        <p class="eyebrow">Software Developer Portfolio</p>
+        <h1>I build secure, testable software.</h1>
+        <p class="lede">I am a computer science graduate focused on dependable software development, application security, and quality assurance. Explore practical work in C++17, Python, SQL, SQLite, algorithms, automated testing, and technical communication.</p>
         <div class="hero-actions">
-          <a class="button" href="#assessment">Read the self-assessment</a>
-          <a class="button secondary" href="documents/Professional_Self_Assessment_Parminder_Singh.docx">Download Word document</a>
+          <a class="button" href="#artifact-summary">View featured work</a>
+          <a class="button secondary" href="code-review.html">Watch the code review</a>
+          <a class="button secondary" href="https://github.com/parm001/CS499-e-portfolio">View GitHub repository</a>
         </div>
       </div>
     </section>
@@ -42,6 +44,21 @@
         <div class="proof"><strong>13 / 13</strong><span>software-design checks passed</span></div>
         <div class="proof"><strong>19 / 19</strong><span>algorithm checks passed</span></div>
         <div class="proof"><strong>6 / 6</strong><span>database tests passed</span></div>
+      </section>
+
+      <section class="professional-summary" aria-labelledby="professional-focus">
+        <div>
+          <p class="eyebrow">Professional Focus</p>
+          <h2 id="professional-focus">Evidence-driven software development</h2>
+          <p>I improve existing systems by identifying risk, designing maintainable changes, and proving behavior through tests and reproducible documentation. This portfolio follows one original security-focused C++ artifact through three enhancements, making the progression from analysis to implementation easy to evaluate.</p>
+        </div>
+        <div class="skills-panel" aria-label="Technical skills">
+          <h2>Core skills</h2>
+          <ul class="skill-list">
+            <li>C++17</li><li>Python</li><li>SQL &amp; SQLite</li><li>Algorithms</li>
+            <li>Automated testing</li><li>Secure coding</li><li>Git &amp; GitHub</li><li>Technical documentation</li>
+          </ul>
+        </div>
       </section>
 
       <article id="assessment" class="measure">
@@ -77,22 +94,26 @@
       </article>
 
       <section aria-labelledby="artifact-summary">
-        <h2 id="artifact-summary">Portfolio at a glance</h2>
+        <p class="eyebrow section-label">Featured Work</p>
+        <h2 id="artifact-summary">Projects and technical evidence</h2>
         <div class="card-grid">
           <article class="card">
-            <span class="tag">Milestone One</span>
-            <h3><a href="code-review.html">Code review</a></h3>
-            <p>Analyzes the original behavior, identifies reliability and security concerns, and introduces the enhancement plan.</p>
+            <span class="tag">Security Analysis</span>
+            <h3><a href="code-review.html">C++ code review</a></h3>
+            <p>Identifies memory, recursion, iterator, exception, and control-flow risks in the original source, then connects each finding to a completed improvement.</p>
+            <a class="text-link" href="code-review.html">Watch review and inspect source →</a>
           </article>
           <article class="card">
-            <span class="tag">Enhancements One &amp; Two</span>
-            <h3><a href="software-design.html">C++ engineering</a></h3>
-            <p>Moves from unsafe examples to maintainable contracts, reusable algorithms, automated verification, and performance evidence.</p>
+            <span class="tag">C++17 Engineering</span>
+            <h3><a href="software-design.html">Safe architecture and algorithms</a></h3>
+            <p>Replaces unsafe examples with maintainable contracts and reusable algorithms, supported by 32 passing checks, sanitizer runs, and performance comparisons.</p>
+            <a class="text-link" href="software-design.html">Review implementation evidence →</a>
           </article>
           <article class="card">
-            <span class="tag">Enhancement Three</span>
-            <h3><a href="databases.html">Secure data layer</a></h3>
-            <p>Transforms findings into normalized, constrained, auditable, and decision-ready SQLite records.</p>
+            <span class="tag">Python &amp; SQLite</span>
+            <h3><a href="databases.html">Security findings tracker</a></h3>
+            <p>Turns review findings into normalized, constrained, auditable records using parameterized queries, reporting, JSON export, and six automated tests.</p>
+            <a class="text-link" href="databases.html">Explore schema, app, and tests →</a>
           </article>
         </div>
 
